@@ -1,0 +1,209 @@
+<div class="card-body">
+    <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+        <li class="nav-item waves-effect waves-light">
+            <a class="nav-link active" data-toggle="tab" href="#contexto" role="tab">Contexto</a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+            <a class="nav-link" data-toggle="tab" href="#desafio" role="tab">O Desafio</a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+            <a class="nav-link" data-toggle="tab" href="#esperamos" role="tab">O que esperamos?</a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+            <a class="nav-link" data-toggle="tab" href="#resumo" role="tab">Resumo</a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+            <a class="nav-link" data-toggle="tab" href="#regras" role="tab">Regras</a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+            <a class="nav-link" data-toggle="tab" href="#avaliacao" role="tab">Avaliação</a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+            <a class="nav-link" data-toggle="tab" href="#prazo" role="tab">Prazo e Entrega</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active p-3" id="contexto" role="tabpanel">
+            <p>
+                Em 2020 com o crescimento do mercado imobiliário, diversos
+                sistemas para incorporadoras foram surgindo e com isso passou
+                a existir a necessidade de unificar os registros desses sistemas
+                em uma única Dashboard para que a visualização de todos os dados
+                pertencentes a uma incorporadora seja realizada de maneira simples
+                e rápida.
+            </p>
+        </div>
+        <div class="tab-pane p-3" id="desafio" role="tabpanel">
+            <p>
+                É aí que você entra! Precisamos criar uma Dashboard concentrando todas as informações de um dos
+                nossos clientes a fim de possibilitar a visualização de suas informações (de maneira resumida) em
+                formato de lista,
+                possibilitando a visualização detalhada caso o usuário selecione um registro específico.
+            </p>
+            <p>
+                Existe um arquivo JSON (link na especificação do que deve ser feito no back-end) que contém
+                detalhamentos de diversos clientes e essas são as informações que devem ser exibidas na dashboard.
+            </p>
+        </div>
+        <div class="tab-pane p-3" id="esperamos" role="tabpanel">
+            <p>
+                Você mesmo irá criar a interface, então a faça da melhor maneira possível, deixando a criatividade tomar
+                conta e não se esqueça que esta aplicação vai para a produção, então crie-a como se você fosse um
+                prestador de serviço e tivesse que entregar para o seu cliente.
+            </p>
+            <h4 class="mt-0 font-16">Front-end</h4>
+            <p>
+                A interface deve conter até dez itens por página e cada um precisa ter as seguintes informações: Foto do
+                usuário (utilizando o primeiro item do Array Photos), name, e-mail, company, age e budget.
+            </p>
+            <p>
+                Além desses dados faz-se necessário conter filtro pelos campos, os itens em ordem alfabética e criar um
+                range de data, utilizando o campo registered conforme a imagem abaixo.
+            </p>
+            <p>
+                Além da listagem, ao clicar em um dos registros faz-se necessário exibir as informações adicionais de
+                cada cliente, como todas as fotos, timeline de contatos, mapa com um pin na latitude e longitude
+                informada, etc.
+            </p>
+            <p>
+                Essa parte vai 100% da sua criatividade, podendo utilizar as informações contidas em cada objeto para
+                exibir o que for mais relevante e com a configuração que achar melhor.
+            </p>
+            <div class="">
+                <img src="public/assets/images/phase_2/smarts-dashboard.png" class="img-fluid" alt="Responsive image">
+            </div>
+            <h4 class="mt-0 font-16">Back-end</h4>
+            <p>
+                Queremos que utilize nosso JSON que encontra-se disponível nessa
+                <a href="https://smarts-totem.s3-sa-east-1.amazonaws.com/code-challenge/customers.json"
+                    class="active">
+                    URL
+                </a>
+                descrita abaixo e crie uma rota com output das informações, que será consumida pelo front.
+            </p>
+            <p>
+                As informações precisam ser exibidas de maneira paginada, portando sua “api” deve conter suporte a
+                paginação dentro da query de cada requisição.
+            </p>
+            <p>
+                Ao final do desenvolvimento do back-end, deverá existir uma aplicação com um end point que receba uma
+                requisição com informações de paginação que retorne um JSON com os itens desejados, um exemplo de
+                end-point válido é: "sua-api:8080/Customers?page=3".
+            </p>
+            <p>
+                Onde a rota "/Customers" está preparada pra receber uma requisição do tipo GET e está preparada para
+                utilizar o valor do parâmetro "page" para poder realizar o filtro dos objetos pertencentes a terceira
+                página que devem ser retornados.
+            </p>
+            <p>
+                <a href="https://medium.com/javascript-in-plain-english/simple-pagination-with-node-js-mongoose-and-express-4942af479ab2"
+                    class="active">
+                    > Exemplo de como realizar a paginação em “Node JS”
+                </a>
+            </p>
+
+            <p>
+                Acreditamos que no desafio existem diversos detalhes como paginação, filtragem dos itens no back, e por
+                aí vai, porém, o conceito geral é o mais importante, então não tem problema entregar a resposta sem
+                certos detalhes contanto que esteja dentro do escopo principal.
+            </p>
+
+        </div>
+        <div class="tab-pane p-3" id="resumo" role="tabpanel">
+            <p>
+                Deve ser criada uma aplicação que consuma o JSON e disponibilize o acesso a ele por meio de um endpoint
+                (API – BACKEND). Além disso é necessário criar uma aplicação que tenha a API desenvolvida por você e
+                exiba os registros recebidos (FRONTEND).
+            </p>
+        </div>
+
+        <div class="tab-pane p-3" id="regras" role="tabpanel">
+            <p>
+                Não é permitido que o front consuma diretamente os dados que veem do JSON.
+            </p>
+            <p>
+                É necessário que faça o desenvolvimento do front-end e do back-end de maneira separada. Não será aceito
+                uma resposta que fuja do escopo geral definido no resumo.
+            </p>
+            <p>
+                Fica a critério do candidato as linguagens a serem utilizadas, como por exemplo: Frameworks, libs, etc.
+                Não recomendamos a utilização de Opensources que englobam o escopo geral sendo necessário somente
+                algumas alterações.
+            </p>
+        </div>
+
+        <div class="tab-pane p-3" id="avaliacao" role="tabpanel">
+            <p>
+                Iremos avaliar a sua solução por meio dos seguintes itens:
+            </p>
+            <ul>
+                <li>
+                    Organização
+                </li>
+                <li>
+                    Manutenibilidade
+                </li>
+                <li>
+                    Rastreabilidade
+                </li>
+                <li>
+                    Testabilidade
+                </li>
+                <li>
+                    Performance
+                </li>
+                <li>
+                    Portabilidade
+                </li>
+                <li>
+                    Entendimento do problema (sua interpretação, bem como seu entendimento a respeito das regras
+                    propostas também faz parte do teste, pois estamos avaliando a forma como você entende e resolve
+                    problemas).
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane p-3" id="prazo" role="tabpanel">
+            <p>
+                A ideia é que esse desafio não ocupe muito o seu tempo e a partir do momento que o receber terá o prazo
+                de sete dias para elaboração. Indicamos que para entregá-lo você deve criar um repositório
+                público no GitHub.
+            </p>
+            <p>
+                Para facilitar a identificação do seu desafio é necessário o nomear para smarts-challenge
+                -{linguagem} (ex: smarts-challenge-javascript). Pedimos também que faça um README com pelo menos algumas
+                instruções básicas como por exemplo:
+            </p>
+            <ul>
+                <li>
+                    Como rodar localmente?
+                </li>
+                <li>
+                    Como rodar os testes?
+                </li>
+                <li>
+                    Como fazer o deploy?
+                </li>
+            </ul>
+            <p>
+                Prezamos muito por documentação em forma de README, que deve conter todos os itens listados acima, além
+                de outras informações sobre o projeto como as linguagens, plugins, libs e frameworks utilizados e o
+                motivo. Quais foram as partes do projeto que você conseguiu realizar com mais facilidade, quais partes
+                você teve mais dificuldade e o porquê. O que aprendeu com esse desafio e quais melhorias você
+                implementaria se tivesse mais tempo.
+            </p>
+            <p>
+                O README vai ser o primeiro contato dos avaliadores com o seu projeto, portanto ele deve ser bem escrito
+                e conter todas as informações necessárias e que possam gerar valor para quem irá ler.
+            </p>
+            <a href="https://medium.com/@meakaakka/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3"
+                class="active">
+                > Referência para escrever um README
+            </a>
+
+            <h3><span class="badge badge-light">Bom teste!</span></h3>
+        </div>
+
+    </div>
+
+</div>

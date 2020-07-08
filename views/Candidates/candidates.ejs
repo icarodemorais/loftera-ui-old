@@ -1,0 +1,130 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+<!-- DataTables -->
+<link href="public/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="public/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<!-- Responsive datatable examples -->
+<link href="public/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+
+<%- contentFor('body') %>
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Candidates</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card m-b-20" style="overflow-x: auto;">
+                    <div class="card-body">
+                        <table id="candidates-datatable" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Full Name</th>
+                                    <th>E-mail</th>
+                                    <th>Cellphone</th>
+                                    <th>Linkedin</th>
+                                    <th>Repository</th>
+                                    <th>Description</th>
+                                    <th>Phase</th>
+                                    <th>Reply</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <!-- <button><i class="fa fa-eye" aria-hidden="true"></i></button>-->
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div> <!-- container-fluid -->
+    <div id="replies-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0">Histórico de Respostas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body" style="width: 100%">
+                    <div class="col-sm-12">
+                        <div class="card m-b-20" style="overflow-x: auto;">
+                            <div class="card-body">
+                                <table id="replies-datatable" class="table table-bordered dt-responsive nowrap"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Github</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</div> <!-- content -->
+
+<%- contentFor('FooterJs') %>
+<script>
+    var itens = [];
+    <% for (var i = 0; i < candidates.length; i++) { %>
+        var item = {
+            id: '<%= candidates[i].id%>',
+            fullName: '<%= candidates[i].fullName%>',
+            email: '<%= candidates[i].email%>',
+            cellPhone: '<%= candidates[i].cellPhone%>',
+            linkedIn: '<%= candidates[i].linkedin%>',
+            repositoryHub: '<%= candidates[i].repositoryHub%>',
+            description: '<%= candidates[i].description%>',
+            phase: '<%= candidates[i].phase%>',
+            reply: "<button type='button' class='btn btn-primary waves-light '><i class='fa fa-eye' aria-hidden='true'></i></button>"
+        }
+        itens.push(item);
+    <% } %>
+
+</script>
+<script src="public/assets/js/candidate.js"></script>
+<!-- Required datatable js -->
+<script src="public/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="public/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="public/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="public/plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="public/plugins/datatables/jszip.min.js"></script>
+<script src="public/plugins/datatables/pdfmake.min.js"></script>
+<script src="public/plugins/datatables/vfs_fonts.js"></script>
+<script src="public/plugins/datatables/buttons.html5.min.js"></script>
+<script src="public/plugins/datatables/buttons.print.min.js"></script>
+<script src="public/plugins/datatables/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="public/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="public/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="public/assets/pages/datatables.init.js"></script>

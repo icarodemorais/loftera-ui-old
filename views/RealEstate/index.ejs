@@ -1,0 +1,46 @@
+<%- contentFor('HeaderCss') %>
+<%- contentFor('body') %>
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Imóveis</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <% for (var i = 0; i < realEstate.length; i++) { %>
+
+            <div class="col-xl-4 col-md-6">
+                <div class="card directory-card m-b-20">
+                    <div>
+                        <div class="directory-bg text-center" style="background-image: url('<%= realEstate[i].thumbnail %>');">
+                            <div class="directory-overlay">
+                                <img class="rounded-circle thumb-lg img-thumbnail"
+                                    src="<%= realEstate[i].thumbnail %>" alt="<%= realEstate[i].title %>">
+                            </div>
+                        </div>
+
+                        <div class="directory-content text-center p-4">
+                            <h5 class="font-16 mt-4"><%= realEstate[i].title %></h5>
+
+                            <span class="text-muted"><%= realEstate[i].description %></span>
+
+                            <ul class="social-links list-inline mb-0 mt-4">
+                                <a href="/realestate/<%= realEstate[i].id %>" class="btn btn-success waves-effect waves-light" type="submit">Ver mais</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end col -->
+
+        <% } %>
+        </div>
+    </div> <!-- container-fluid -->
+</div> <!-- content -->
+
+<%- contentFor('FooterJs') %>

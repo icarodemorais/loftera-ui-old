@@ -1,0 +1,103 @@
+<% include ../Partials/HeaderRoot  %>
+<div class="wrapper-page-large">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="p-3">
+                <h4 class="text-muted font-18 m-b-5 text-center">Cadastro</h4>
+                <p class="text-muted text-center">Faça o seu cadastro e anuncie ou alugue novos empreendimentos</p>
+                <div class="alert alert-info" role="alert">
+                    <strong>Atenção:</strong> Seu login será seu e-mail e sua senha será seu cpf. Preencha os campos
+                    corretamente.
+                </div>
+                <form id="register-form" class="form-horizontal m-t-30" action="/register" method="POST">
+                    <div class="row">
+                        <diw class="col-md-6">
+                            <div class="form-group">
+                                <label for="username">Nome completo*</label>
+                                <input type="text" class="form-control" name="fullName" id="fullName" required
+                                    data-parsley-minlength="3" placeholder="Nome completo" value="nome completo">
+                            </div>
+                        </diw>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" class="form-control" name="email" id="email" required
+                                    placeholder="Seu melhor e-mail" parsley-type="email" value="teste@teste.com">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cellphone">Celular*</label>
+                                <input type="text" class="form-control phonenumber" name="cellPhone" id="cellPhone"
+                                    placeholder="Seu celular" required
+                                    data-parsley-length="[15,15]" value="11999996666">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cpf">CPF*</label>
+                                <input type="text" class="form-control" name="cpf" id="cpf" required
+                                    data-parsley-minlength="14" data-parsley-cpfvalidator="true" placeholder="CPF" value="12345678909">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="gender">Sexo*</label>
+                                <select name="gender" id="gender" class="form-control" required>
+                                    <!-- <option value="">Selecione</option> -->
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                    <option value="O">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="gender">Perfil*</label>
+                                <select name="role" id="role" class="form-control" required>
+                                    <!-- <option value="">Selecione</option> -->
+                                    <option value="locator">Quero anunciar!</option>
+                                    <option value="tenant">Quero alugar!</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description">Mensagem de apresentação*</label>
+                                <div>
+                                    <textarea id="description" name="description" required class="form-control" rows="1"
+                                        data-parsley-minlength="20">teste de mensagem para o cadastro fixo</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group row m-t-20">
+                <div class="col-12 text-right">
+                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Enviar</button>
+                </div>
+            </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="m-t-40 text-center">
+    <p class="text-white">Já fez o seu cadastro ? <a href="/pages-login" class="text-primary-new"> Faça o login </a> </p>
+    <p class="text-white">© 2020 Loftera. Implemented by <a href="https://github.com/icarodemorais" class="text-primary-new" target="_blank">@icaro</a> and <a href="https://github.com/CinthiaYamamotoMa" class="text-primary-new">@cinthia</a></p>
+</div>
+
+</div>
+
+<% include ../Partials/FooterRoot  %>
+
+<script src="public/plugins/parsleyjs/parsley.min.js"></script>
+<script src="public/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js"></script>
+<script src="public/assets/js/register.js"></script>

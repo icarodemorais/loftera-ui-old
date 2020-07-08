@@ -1,0 +1,216 @@
+<%- contentFor('HeaderCss') %>
+<%- contentFor('body') %>
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Imóvel</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-primary-new">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-currency-usd float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">Alugel</h6>
+                            <h4 class="mb-4">R$<%= realEstate.rent %></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-primary-new">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-domain float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">Condominio</h6>
+                            <h4 class="mb-4">R$<%= realEstate.condoFee %></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-primary-new" id="resposta">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-account-search float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">IPTU</h6>
+                            <h4 class="mb-4">R$<%= realEstate.iptu %></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-primary-new">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-diamond float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">Total</h6>
+                            <h4 class="mb-4">
+                                R$<%= parseInt(realEstate.rent) + parseInt(realEstate.condoFee) + parseInt(realEstate.iptu) %>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12">
+
+                <!-- Simple card -->
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <h4 class="card-title font-16 mt-0"><%= realEstate.title %></h4>
+                        <p class="card-text">$<%= realEstate.description %></p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12 col-lg-12 col-xl-12">
+
+                <!-- Simple card -->
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <h4 class="card-title font-16 mt-0">Informações de Localização</h4>
+                        <div class="row">
+                            <span class="col-md-6 col-lg-6 col-xl-6">Endereço: <%= realEstate.address %></span>
+                            <span class="col-md-6 col-lg-6 col-xl-6">Número: <%= realEstate.number %></span>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-6 col-lg-6 col-xl-6">Complemento: <%= realEstate.complement %></span>
+                            <span class="col-md-6 col-lg-6 col-xl-6">Bairro: <%= realEstate.neighborhood %></span>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-6 col-lg-6 col-xl-6">Cidade: <%= realEstate.city %></span>
+                            <span class="col-md-6 col-lg-6 col-xl-6">Estado: <%= realEstate.state %></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <% if(realEstate.images.length){ %>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <h4 class="card-title font-16 mt-0">Galeria</h4>
+                        <div id="carouselExampleCaption" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <% for (var i = 0; i < realEstate.images.length; i++) {%>
+                                <div class="carousel-item <%= i == 0 ?  'active' : 'other' %>">
+                                    <img src="<%= realEstate.images[i].url %>" alt="..." class="d-block img-fluid">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <p><%= realEstate.images[i].description %></p>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleCaption" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleCaption" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+    </div> <!-- container-fluid -->
+</div> <!-- content -->
+
+<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" id="solicitationModal"
+    aria-labelledby="solicitationModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Solicitação de Contato</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Ao enviar uma solicitação de contato, as suas informações de contato estarão disponíves para o
+                    responsável por esse anúnco.</p>
+                <p>Ao concordar em enviar a solicitação você autoriza o responsável por esse anúncio a entrar em contato
+                    com você pelos canais fornecidos durante o cadastro.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success waves-effect waves-light" onclick="sendSolicitation()">Confirmar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<%- contentFor('FooterJs') %>
+<script>
+    function openSolicitaitonModal() {
+        $("#solicitationModal").modal('toggle');
+    }
+    function sendSolicitation() {
+
+        var data = [];
+        data.push({
+            name: "realEstateId",
+            value: '<%= realEstateId%>'
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: '/realestate/solicitation',
+            data: data,
+            success: function (retorno) {
+                new Noty({
+                    type: 'success',
+                    theme: 'nest',
+                    text: 'Solicitação enviada com sucesso. Você pode acessar a página de solicitações para visualizar suas solicitações',
+                    timeout: 3500,
+                    layout: 'topRight'
+                }).show();
+                $("#solicitationModal").modal('toggle');
+            },
+            error: function (error) {
+                if (error.status == 500) {
+                    new Noty({
+                        type: 'error',
+                        theme: 'nest',
+                        text: 'Erro ao enviar solicitação.',
+                        timeout: 3500,
+                        layout: 'topRight'
+                    }).show();
+                } else {
+                    new Noty({
+                        type: 'warning',
+                        theme: 'nest',
+                        text: 'Solicitação enviada com sucesso. Você pode acessar a página de solicitações para visualizar suas solicitações',
+                        timeout: 3500,
+                        layout: 'topRight'
+                    }).show();
+                }
+            }
+        })
+    }
+</script>
+
+<div id="creatSolicitation">
+    <button class="btn btn-success waves-effect waves-light" onclick="openSolicitaitonModal()">Solicitar
+        Contato</button>
+</div>

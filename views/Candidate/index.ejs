@@ -1,0 +1,189 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+
+
+<%- contentFor('body') %>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Candidato</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <!-- Start phase row -->
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-secondary" phase="1">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-filter float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">1º</h6>
+                            <h4 class="mb-4">Filtragem</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-secondary" phase="2">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-code-braces float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">2º</h6>
+                            <h4 class="mb-4">Desafio</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-secondary" id="resposta" phase="3">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-account-search float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">3º</h6>
+                            <h4 class="mb-4">Resposta</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mini-stat bg-secondary" phase="4">
+                    <div class="card-body mini-stat-img">
+                        <div class="mini-stat-icon">
+                            <i class="mdi mdi-check-all float-right"></i>
+                        </div>
+                        <div class="text-white">
+                            <h6 class="text-uppercase mb-3">4º</h6>
+                            <h4 class="mb-4">Entrevista</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <!-- Content row -->
+        <div class="row">
+
+            <div class="col-xl-8">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">Descrição</h4>
+                        <div class="row text-left m-0">
+                            <% switch ( phase ) { 
+                                case '1': %>
+                                    <%- include('../Phases/phase_1'); %>
+                                <% break; %>
+                                <% case '2': %>
+                                    <%- include('../Phases/phase_2'); %>
+                                <% break; %>
+                                <% case '3': %>
+                                    <%- include('../Phases/phase_3'); %>
+                                <% break; %>
+                                <% case '4': %>
+                                    <%- include('../Phases/phase_4'); %>
+                                <% break; %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+
+                <% if( phase == '2' ) { %>
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Desafio</h4>
+
+                        <form class="form-horizontal m-t-30" action="/Replies" method="POST" id="reply-form">
+                            <div class="form-group">
+                                <label for="linkedin">Github*</label>
+                                <input type="url" class="form-control" name="github" id="github" parsley-type="url"
+                                    value="<%=reply.url%>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Descrição*</label>
+                                <div>
+                                    <textarea id="description" name="description" required class="form-control" rows="1"
+                                        data-parsley-minlength="20"> <%=reply.description%> </textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row m-t-20">
+                                <div class="col-12 text-right">
+                                    <button class="btn btn-primary w-md waves-effect waves-light"
+                                        type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+
+            <div class="col-xl-4 col-lg-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title mb-4">Cronograma</h4>
+
+                        <ol class="activity-feed mb-0">
+                            <li class="feed-item">
+                                <div class="feed-item-list">
+                                    <span class="date">23 de março</span>
+                                    <span class="activity-text">Início das inscrições</span>
+                                </div>
+                            </li>
+                            <li class="feed-item">
+                                <div class="feed-item-list">
+                                    <span class="date">27 de março</span>
+                                    <span class="activity-text">Fim das inscrições</span>
+                                </div>
+                            </li>
+                            <li class="feed-item">
+                                <div class="feed-item-list">
+                                    <span class="date">30 de março</span>
+                                    <span class="activity-text">Início da filtragem dos currículos</span>
+                                </div>
+                            </li>
+                            <li class="feed-item">
+                                <div class="feed-item-list">
+                                    <span class="date">3 de abril</span>
+                                    <span class="activity-text">Finalização da filtragem dos currículos</span>
+                                </div>
+                            </li>
+                            <li class="feed-item">
+                                <div class="feed-item-list">
+                                    <span class="date">6 de abril</span>
+                                    <span class="activity-text">Divulgação do resultado e início do agendamento das
+                                        entrevistas</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+
+        </div> <!-- container-fluid -->
+
+    </div> <!-- content -->
+    <%- contentFor('FooterJs') %>
+    <script src="public/plugins/parsleyjs/parsley.min.js"></script>
+    <script src="public/assets/js/reply.js"></script>
+    <script>
+        var phase = '<%= phase %>';
+        $("[phase='" + phase + "']").removeClass('bg-secondary').addClass('bg-primary');
+    </script>
